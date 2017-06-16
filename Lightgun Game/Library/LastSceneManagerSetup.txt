@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/2 The Gun Is Good.unity
+- path: Assets/Scenes/Test.unity
   isLoaded: 1
   isActive: 1

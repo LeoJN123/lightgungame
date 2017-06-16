@@ -110,7 +110,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 563}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 70
+  controlID: 145
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -206,8 +206,8 @@ MonoBehaviour:
     y: 673
     width: 943
     height: 274
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 102, y: 121}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -237,7 +237,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 492}
   m_MaxSize: {x: 10004, y: 14042}
   vertical: 1
-  controlID: 144
+  controlID: 146
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -256,8 +256,8 @@ MonoBehaviour:
     y: 0
     width: 540
     height: 492
-  m_MinSize: {x: 204, y: 221}
-  m_MaxSize: {x: 4004, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 20}
@@ -418,14 +418,14 @@ MonoBehaviour:
     width: 941
     height: 401
   m_SceneLighting: 1
-  lastFramingTime: 2003.7880222978217
+  lastFramingTime: 1250.5044469447862
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -4.1705813, y: -2.884852, z: -9.598552}
+    m_Target: {x: -8.30568, y: -1.1064997, z: -11.977959}
     speed: 2
-    m_Value: {x: -4.1705813, y: -2.884852, z: -9.598552}
+    m_Value: {x: -8.30568, y: -1.1064997, z: -11.977959}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -448,13 +448,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.073219955, y: 0.9239014, z: -0.22493416, w: -0.30074856}
+    m_Target: {x: -0.02060226, y: 0.94607306, z: -0.06140831, w: -0.31741202}
     speed: 2
-    m_Value: {x: -0.073219955, y: 0.9239014, z: -0.22493416, w: -0.30074856}
+    m_Value: {x: -0.02060226, y: 0.94607306, z: -0.06140831, w: -0.31741202}
   m_Size:
-    m_Target: 11.865343
+    m_Target: 15.273467
     speed: 2
-    m_Value: 11.865343
+    m_Value: 15.273467
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -620,28 +620,28 @@ MonoBehaviour:
     height: 471
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 4a010000
+    m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: f2e8fffff0e9fffff2e9ffffe4fbffff000000003a2b00000e2c0000162c0000ea2d0000643800006838000072380000c2380000dc380000e6380000
+    m_ExpandedIDs: 5a81fefff08bfeff208efeff069bfeffca9dfeffdc9dfeffe69dfeff84c2feff92c2feff9e78ffffd2daffffe4e5ffff14f6ffffe2fbffffe4fbffff00000000102c00001a2c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Graphic
-      m_OriginalName: Graphic
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: -5706
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 11}
     m_SearchString: 
   m_ExpandedScenes:
-  - 2 The Gun Is Good
+  - Test
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
@@ -682,19 +682,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Prefabs
+    - Assets/Prefabs/Package Prefabs
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Prefabs
+  - Assets/Prefabs/Package Prefabs
   m_LastFoldersGridSize: 16
   m_LastProjectPath: D:\lightgun repo\Lightgun Game
   m_IsLocked: 1
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 39}
-    m_SelectedIDs: 30380000
-    m_LastClickedID: 14384
-    m_ExpandedIDs: 00000000e8260000c6270000362800006c280000a62900005e2a000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 7}
+    m_SelectedIDs: fa2f0000
+    m_LastClickedID: 12282
+    m_ExpandedIDs: 00000000f8260000b0270000f42700008c280000c6280000402a0000222b000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -722,7 +722,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000e8260000c6270000362800006c280000a62900005e2a0000
+    m_ExpandedIDs: 00000000f8260000f42700008c280000c6280000402a0000222b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -750,21 +750,21 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: 94260000802800005a270000522d0000362c000032360000
+    m_ExpandedInstanceIDs: 94260000802800005a270000522d0000362c00003236000092270000107bffff4088feff
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Gun2 Preview
+      m_OriginalName: Gun2 Preview
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: -80180
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 12}
     m_CreateAssetUtility:
