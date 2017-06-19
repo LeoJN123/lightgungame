@@ -9,6 +9,8 @@ public class Blaster : MonoBehaviour {
 
     public GameObject muzzle;
     public GameObject bullet;
+    public AudioSource pewpew;
+    public AudioClip blasterFire;
 
     private void HandAttachedUpdate (Hand hand) {
 
@@ -26,5 +28,6 @@ public class Blaster : MonoBehaviour {
 
     private void Shoot () {
         Instantiate(bullet, muzzle.transform.position, muzzle.transform.rotation);
+        pewpew.PlayOneShot(blasterFire);
     }
 }
