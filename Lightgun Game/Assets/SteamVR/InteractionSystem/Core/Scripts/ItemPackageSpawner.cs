@@ -225,7 +225,13 @@ namespace Valve.VR.InteractionSystem
 				{
 					SpawnAndAttachObject( hand );
 				}
-			}
+
+                if (hand.controller == null && hand.GetStandardInteractionButtonDown()) {
+                    SpawnAndAttachObject(hand);
+                }
+            }
+
+
 		}
 
 
@@ -244,7 +250,11 @@ namespace Valve.VR.InteractionSystem
 		//-------------------------------------------------
 		private void RemoveMatchingItemsFromHandStack( ItemPackage package, Hand hand )
 		{
-			for ( int i = 0; i < hand.AttachedObjects.Count; i++ )
+            if (hand == null) {
+                return;
+            }
+
+            for ( int i = 0; i < hand.AttachedObjects.Count; i++ )
 			{
 				ItemPackageReference packageReference = hand.AttachedObjects[i].attachedObject.GetComponent<ItemPackageReference>();
 				if ( packageReference != null )
@@ -263,7 +273,12 @@ namespace Valve.VR.InteractionSystem
 		//-------------------------------------------------
 		private void RemoveMatchingItemTypesFromHand( ItemPackage.ItemPackageType packageType, Hand hand )
 		{
-			for ( int i = 0; i < hand.AttachedObjects.Count; i++ )
+
+            if (hand == null) {
+                return;
+            }
+
+            for ( int i = 0; i < hand.AttachedObjects.Count; i++ )
 			{
 				ItemPackageReference packageReference = hand.AttachedObjects[i].attachedObject.GetComponent<ItemPackageReference>();
 				if ( packageReference != null )
