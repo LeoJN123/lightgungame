@@ -10,6 +10,15 @@ public class Enemy : MonoBehaviour {
     public float speed;
     public float circleDistance;
     public float health;
+    public float deathExplosionForce;
+    public float shootInterval;
+
+    public AudioSource audioS;
+    public AudioClip deathSfx;
+    public AudioClip damageSfx;
+    public AudioClip fireSfx;
+    public ParticleSystem partFx;
+    public GameObject bullet;
 
     GameObject player;
     Rigidbody rb;
@@ -22,6 +31,8 @@ public class Enemy : MonoBehaviour {
     private void Awake() {
         player = GameObject.Find("Player");
         rb = GetComponent<Rigidbody>();
+        partFx.Pause();
+        StartCoroutine(FiringAI());
     }
 
     private void FixedUpdate() {
@@ -51,18 +62,48 @@ public class Enemy : MonoBehaviour {
         rb.velocity = enemyVelocity;
     }
 
-    void TakeDamage(float damage) {
-        health--;
-        if (health < 0) {
+    public void TakeDamage(float damageToUs) {
+        
+        if (health <= damageToUs) {
             Death();
+        } else {
+            PlaySound(damageSfx);
+            health -= damageToUs;
+            partFx.Play();
         }
+        
+        
     }
 
     public void Death () {
-        Destroy(gameObject);
+        StartCoroutine(DeathSequence());
     }
 
-    private void OnCollisionEnter(Collision collision) {
-        TakeDamage(10);
+    void Fire() {
+        Instantiate(bullet, transform.position, Quaternion.LookRotation(direction, Vector3.up) , gameObject.transform);
+        audioS.PlayOneShot(fireSfx);
+    }
+
+    IEnumerator FiringAI() {
+        while (true) {
+            yield return new WaitForSeconds(shootInterval);
+            Fire();
+        }
+    }
+
+    IEnumerator DeathSequence() {
+        rb.useGravity = true;
+        PlaySound(deathSfx);
+        rb.AddForce(Random.onUnitSphere * deathExplosionForce, ForceMode.Impulse );
+        rb.AddTorque(Random.onUnitSphere * deathExplosionForce, ForceMode.Impulse);
+        partFx.Play();
+        yield return new WaitForSeconds(1);
+        Destroy(gameObject);
+        yield break;
+    }
+
+    void PlaySound (AudioClip aud) {
+        audioS.pitch = Random.Range(0.75f, 1.25f);
+        audioS.PlayOneShot(aud);
     }
 }
