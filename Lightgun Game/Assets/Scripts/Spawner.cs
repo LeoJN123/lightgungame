@@ -7,38 +7,49 @@ public class Spawner : MonoBehaviour {
     public GameObject enemyContainer;
     public GameObject[] spawnPoints;
     public GameObject[] enemies;
-    
+
     public Vector3 spawnerMovementV3;
-    public float spawnerMovementSpeed;  
+    public float spawnerMovementSpeed;
     public float spawnTime = 2f;
+    public float wavePause = 5f;
     [Tooltip("Number between 0 and 1")]
     public float difficultyPercentage = 0.95f;
 
-    float waveEnemyNumber = 4;
+    public float startEnemyNumber = 4;
+    public float waveEnemyNumber;
     List<GameObject> enemiesAlive = new List<GameObject>();
     int wave;
     bool waveInProgress;
 
     public void WaveStart() {
         StartCoroutine(Spawning());
+        waveEnemyNumber = startEnemyNumber;
     }
 
     public void WaveEnd() {
-        
-        waveEnemyNumber *= 1.5f;
+        StartCoroutine(WaveLimbo());
+        StopCoroutine(Spawning());
+        startEnemyNumber *= 1.5f;
     }
 
     private void Start() {
+        StartCoroutine(WaveLimbo());
+    }
+    IEnumerator WaveLimbo() {
+        yield return new WaitForSeconds(wavePause);
         WaveStart();
-    }   
+        yield return null;
+    }
 
-    IEnumerator Spawning () {
+    IEnumerator Spawning() {
 
         while (true) {
+
+
             InstantiateEnemy();
             yield return new WaitForSeconds(spawnTime);
             spawnTime *= difficultyPercentage;
-            
+
         }
     }
 

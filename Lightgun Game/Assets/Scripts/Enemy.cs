@@ -86,18 +86,19 @@ public class Enemy : MonoBehaviour {
 
     IEnumerator FiringAI() {
         while (true) {
-            yield return new WaitForSeconds(shootInterval);
+            yield return new WaitForSeconds(shootInterval + Random.Range(0,3));
             Fire();
         }
     }
 
     IEnumerator DeathSequence() {
+        StopCoroutine(FiringAI());
         rb.useGravity = true;
         PlaySound(deathSfx);
         rb.AddForce(Random.onUnitSphere * deathExplosionForce, ForceMode.Impulse );
         rb.AddTorque(Random.onUnitSphere * deathExplosionForce, ForceMode.Impulse);
         partFx.Play();
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(shootInterval);
         Destroy(gameObject);
         yield break;
     }
