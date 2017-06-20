@@ -9,8 +9,12 @@ public class Blaster : MonoBehaviour {
 
     public GameObject muzzle;
     public GameObject bullet;
-    public AudioSource pewpew;
+    public AudioSource fireAudioSource;
     public AudioClip blasterFire;
+
+    public float fireInterval;
+
+    bool canFire = true;
 
     private void HandAttachedUpdate (Hand hand) {
 
@@ -27,7 +31,23 @@ public class Blaster : MonoBehaviour {
     }
 
     private void Shoot () {
-        Instantiate(bullet, muzzle.transform.position, muzzle.transform.rotation);
-        pewpew.PlayOneShot(blasterFire);
+        if (canFire) {
+            Instantiate(bullet, muzzle.transform.position, muzzle.transform.rotation);
+            PlaySound(blasterFire);
+            canFire = false;
+            StartCoroutine(FirePause());
+        }
+
+    }
+
+    IEnumerator FirePause() {
+        yield return new WaitForSeconds(fireInterval);
+        canFire = true;
+        yield return null;
+    }
+
+    void PlaySound(AudioClip aud) {
+        fireAudioSource.pitch = UnityEngine.Random.Range(0.75f, 1.25f);
+        fireAudioSource.PlayOneShot(aud);
     }
 }
