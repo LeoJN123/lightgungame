@@ -8,26 +8,27 @@ public class Enemy : MonoBehaviour {
 
     public enemyTier enemyLevel;
     public float speed;
+    public float circleDistance;
+    public float health;
 
-    public GameObject player;
-    Vector3 direction;
-    Vector3 playerLocation;
+    GameObject player;
     Rigidbody rb;
 
     //Ignore these
-    
+    Vector3 playerPos;
+    Vector3 direction;
+    Vector3 enemyVelocity;
 
     private void Awake() {
+        player = GameObject.Find("Player");
         rb = GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate() {
 
-        var v = rb.velocity;
-        var pp = player.transform.position;
-        var d = (pp - transform.position).normalized;
-        v = v + d * speed * Time.fixedDeltaTime;
-        rb.velocity = v;
+        if (Vector3.Distance(transform.position, playerPos) > circleDistance) {
+            MoveTowardsPlayer();
+        }     
 
         if (enemyLevel == enemyTier.blue) {
 
@@ -40,5 +41,28 @@ public class Enemy : MonoBehaviour {
         if (enemyLevel == enemyTier.pink) {
 
         }
+    }
+
+    void MoveTowardsPlayer () {
+        enemyVelocity = rb.velocity;
+        playerPos = player.transform.position;
+        direction = (playerPos - transform.position).normalized;
+        enemyVelocity = enemyVelocity + direction * speed * Time.fixedDeltaTime;
+        rb.velocity = enemyVelocity;
+    }
+
+    void TakeDamage(float damage) {
+        health--;
+        if (health < 0) {
+            Death();
+        }
+    }
+
+    public void Death () {
+        Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter(Collision collision) {
+        TakeDamage(10);
     }
 }

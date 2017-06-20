@@ -6,12 +6,21 @@ public class Blasterbullet : MonoBehaviour {
 
     [SerializeField] float bulletSpeed;
     [SerializeField] float lifeTime;
+    public Rigidbody rb;
 
     private void Start() {
         Destroy(gameObject, lifeTime);
     }
 
-    private void Update() {
-        transform.Translate(Vector3.forward * bulletSpeed * Time.deltaTime);
+    private void Awake() {
+        rb.AddForce(transform.forward * bulletSpeed * 10);
+    }
+
+    void Wallhit () {
+        Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter(Collision collision) {
+        Wallhit();
     }
 }
