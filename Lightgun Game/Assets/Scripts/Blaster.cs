@@ -11,6 +11,7 @@ public class Blaster : MonoBehaviour {
     public GameObject bullet;
     public AudioSource fireAudioSource;
     public AudioClip blasterFire;
+    public UnityEvent gunFired;
 
     public float fireInterval;
 
@@ -32,6 +33,7 @@ public class Blaster : MonoBehaviour {
 
     private void Shoot () {
         if (canFire) {
+            gunFired.Invoke();
             Instantiate(bullet, muzzle.transform.position, muzzle.transform.rotation);
             PlaySound(blasterFire);
             canFire = false;
