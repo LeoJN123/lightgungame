@@ -27,4 +27,8 @@ public class Blasterbullet : MonoBehaviour {
         }
         Wallhit();
     }
+
+    private void OnCollisionEnter(Collision collision) {
+        Wallhit();
+    }
 }
