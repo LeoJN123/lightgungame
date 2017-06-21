@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Blasterbullet : MonoBehaviour {
+public class Enemybullet : MonoBehaviour {
 
     [SerializeField] float bulletSpeed;
     [SerializeField] float lifeTime;
@@ -17,14 +17,11 @@ public class Blasterbullet : MonoBehaviour {
         rb.AddForce(transform.forward * bulletSpeed * 10);
     }
 
-    void Wallhit () {
+    void BulletDestroy () {
         Destroy(gameObject);
     }
 
-    private void OnTriggerEnter(Collider coll) {
-        if (coll.gameObject.tag == "Enemy") {
-            coll.GetComponentInParent<Enemy>().TakeDamage(bulletDamage);
-        }
-        Wallhit();
+    private void OnTriggerEnter(Collider other) {
+        BulletDestroy();
     }
 }
