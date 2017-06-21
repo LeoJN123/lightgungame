@@ -12,6 +12,8 @@ public class Enemy : MonoBehaviour {
     public float health;
     public float deathExplosionForce;
     public float shootInterval;
+    public float dodgeSpeed;
+    public float dodgeInterval;
 
     public AudioSource audioS;
     public AudioClip deathSfx;
@@ -19,6 +21,7 @@ public class Enemy : MonoBehaviour {
     public AudioClip fireSfx;
     public ParticleSystem partFx;
     public GameObject bullet;
+
 
     GameObject player;
     Rigidbody rb;
@@ -29,28 +32,21 @@ public class Enemy : MonoBehaviour {
     Vector3 enemyVelocity;
 
     private void Awake() {
-        player = GameObject.Find("Player");
+        if (GameObject.Find("VRCamera") == null) {
+            player = GameObject.Find("FollowHead");
+        } else {
+            player = GameObject.Find("VRCamera");
+        }
         rb = GetComponent<Rigidbody>();
         partFx.Pause();
         StartCoroutine(FiringAI());
+        StartCoroutine(DodgeAI());
     }
 
     private void FixedUpdate() {
 
         if (Vector3.Distance(transform.position, playerPos) > circleDistance) {
             MoveTowardsPlayer();
-        }     
-
-        if (enemyLevel == enemyTier.blue) {
-
-        }
-
-        if (enemyLevel == enemyTier.red) {
-
-        }
-
-        if (enemyLevel == enemyTier.pink) {
-
         }
     }
 
@@ -91,8 +87,16 @@ public class Enemy : MonoBehaviour {
         }
     }
 
+    IEnumerator DodgeAI() {
+        while (true) {
+            yield return new WaitForSeconds(dodgeInterval);
+            rb.AddForce(Random.onUnitSphere * dodgeSpeed, ForceMode.Impulse);
+        }
+    }
+
     IEnumerator DeathSequence() {
         StopCoroutine(FiringAI());
+        StopCoroutine(DodgeAI());
         rb.useGravity = true;
         PlaySound(deathSfx);
         rb.AddForce(Random.onUnitSphere * deathExplosionForce, ForceMode.Impulse );
